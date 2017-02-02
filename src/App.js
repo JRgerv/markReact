@@ -6,6 +6,12 @@ import StackGrid, { transitions } from "react-stack-grid";
 const { scaleDown } = transitions;
 
 class App extends Component {
+  constructor(props) {
+   super(props);
+
+   this.state = {movie: []};
+ }
+
   render() {
     return (
       <div className="App">
@@ -18,7 +24,7 @@ class App extends Component {
         </p>
         <div className="searchField">
           <input placeholder="Enter Movie"></input>
-          <button>Search</button>
+          <button onClick={() => this._search()}>Search</button>
         </div>
         <StackGrid
           appear={scaleDown.appear}
@@ -34,6 +40,15 @@ class App extends Component {
       </div>
     );
   }
+
+  _search = () => {
+    return $.getJSON('http://www.omdbapi.com/?t=happy&y=&plot=short&r=json')
+   .then((data) => {
+     console.log(data)
+     //this.setState({ person: data.results });
+   });
+  }
+
 }
 
 export default App;
