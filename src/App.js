@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import StackGrid, { transitions } from "react-stack-grid";
+var $ = require ('jquery')
 
 const { scaleDown } = transitions;
 
@@ -9,7 +10,10 @@ class App extends Component {
   constructor(props) {
    super(props);
 
-   this.state = {movie: []};
+   this.state = {
+     movie: [],
+     value: ""
+   };
  }
 
   render() {
@@ -23,9 +27,12 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <div className="searchField">
-          <input placeholder="Enter Movie"></input>
+          <input placeholder="Search Movie" value={this.state.value} onChange={this._handleChange}></input>
           <button onClick={() => this._search()}>Search</button>
         </div>
+        <p>Title: {this.state.movie.Title}</p>
+        <img src={this.state.movie.Poster}></img>
+        <p>Plot: {this.state.movie.Plot}</p>
         <StackGrid
           appear={scaleDown.appear}
           appeared={scaleDown.appeared}
@@ -41,13 +48,19 @@ class App extends Component {
     );
   }
 
+  _handleChange = (event) => {
+    this.setState({value: event.target.value});
+  }
+
   _search = () => {
-    return $.getJSON('http://www.omdbapi.com/?t=happy&y=&plot=short&r=json')
+    console.log(this.state.value)
+    return $.getJSON('http://www.omdbapi.com/?t=' + this.state.value + '&y=&plot=short&r=json')
    .then((data) => {
-     console.log(data)
-     //this.setState({ person: data.results });
+     console.log(data);
+     this.setState({ movie: data });
    });
   }
+
 
 }
 
