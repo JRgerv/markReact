@@ -16,6 +16,10 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+        <div className="searchField">
+          <input placeholder="Enter Movie"></input>
+          <button>Search</button>
+        </div>
         <StackGrid
           appear={scaleDown.appear}
           appeared={scaleDown.appeared}
@@ -23,10 +27,6 @@ class App extends Component {
           entered={scaleDown.entered}
           leaved={scaleDown.leaved}
           columnWidth={150}>
-        <div className="searchField">
-          <input placeholder="Enter Movie"></input>
-          <button>Search</button>
-        </div>
         <div key="key1">Item 1</div>
         <div key="key2">Item 2</div>
         <div key="key3">Item 3</div>
