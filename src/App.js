@@ -54,7 +54,7 @@ class App extends Component {
 
   _search = () => {
     console.log(this.state.value)
-    return $.getJSON('http://www.omdbapi.com/?t=' + this.state.value + '&y=&plot=short&r=json')
+    return $.getJSON('https://www.omdbapi.com/?t=' + this.state.value + '&y=&plot=short&r=json')
    .then((data) => {
      console.log(data);
      this.setState({ movie: data });
