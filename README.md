@@ -1,3 +1,35 @@
+## BEFORE YOU MAKE A PULL REQUEST/change:
+
+
+0)Add Upstream. ONLY DO THIS ONE TIME:
+```{r, engine='zsh', count_lines}
+git remote add upstream  https://github.com/vogtn/markReact.git
+```
+
+1)Pull latest commits from mine to your local version. This creates a new branch locally called "upstream/master"
+```{r, engine='zsh', count_lines}
+git fetch upstream
+```
+
+2)Change to master branch:
+```{r, engine='zsh', count_lines}
+git checkout master
+```
+3)Merge Changes
+```{r, engine='zsh', count_lines}
+git merge upstream/master
+```
+4)commit changes
+```{r, engine='zsh', count_lines}
+git commit -m "message" -a
+```
+5)push
+```{r, engine='zsh', count_lines}
+git push origin master
+```
+6)create pull request
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
